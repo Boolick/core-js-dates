@@ -31,11 +31,13 @@ function dateToTimestamp(date) {
  * Date(2023, 5, 1, 8, 20, 55) => '08:20:55'
  * Date(2015, 10, 20, 23, 15, 1) => '23:15:01'
  */
-
+function addZero(number) {
+  return number < 10 ? `0${number}` : number;
+}
 function getTime(date) {
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  const seconds = date.getSeconds();
+  const hours = addZero(date.getHours());
+  const minutes = addZero(date.getMinutes());
+  const seconds = addZero(date.getSeconds());
   return `${hours}:${minutes}:${seconds}`;
 }
 
@@ -246,17 +248,8 @@ function getCountWeekendsInMonth(month, year) {
  * Date(2024, 1, 23) => 8
  */
 
-function getWeekNumberByDate(date) {
-  const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
-  const dayOfWeek = firstDayOfYear.getDay();
-  let weekNumber =
-    Math.ceil((date - firstDayOfYear) / (7 * 24 * 60 * 60 * 1000)) + 1;
-
-  if (dayOfWeek === 0) {
-    weekNumber -= 1;
-  }
-
-  return weekNumber;
+function getWeekNumberByDate(/* date */) {
+  throw new Error('Not implemented');
 }
 
 /**
